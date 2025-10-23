@@ -5,7 +5,6 @@ const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
   const appErr = err instanceof AppError
     ? err
     : new AppError(500, err.message ?? 'Internal Server Error', ErrorCode.INTERNAL);
-
   if (!res.headersSent) {
     res.status(appErr.statusCode).json({
       statusCode: appErr.statusCode,

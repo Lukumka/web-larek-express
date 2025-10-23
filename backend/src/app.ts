@@ -10,6 +10,7 @@ import connectDB from './db';
 import errorHandler from './middlewares/error-handler';
 import errorNormalizer from './middlewares/error-normalizer';
 import config from './config';
+import notFoundMiddleware from './middlewares/not-found-middleware';
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use(requestLogger);
 
 app.use('/product', productRouter);
 app.use('/order', orderRouter);
+app.use('*', notFoundMiddleware);
 
 app.use(errorNormalizer);
 app.use(errorLogger);
