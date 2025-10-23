@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 import Product from '../models/product.model';
-import ConflictError from '../errors/conflict-error';
 
 export const getProducts = (_req:Request, res:Response, next:NextFunction) => {
   Product.find({})
